@@ -1,5 +1,7 @@
 .PHONY: all docker shell
 
+all: shell
+
 docker:
 	docker build docker -t esp32
 

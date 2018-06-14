@@ -1,0 +1,5 @@
+# This folder is not meant to be commited
+*
+
+# Except for this file
+!.gitignore

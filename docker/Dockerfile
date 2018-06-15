@@ -5,8 +5,10 @@ WORKDIR /srv
 RUN mkdir project
 
 RUN apt-get update && \
-    apt-get install -y gcc git wget make libncurses-dev flex bison gperf python python-serial && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y gcc git wget make libncurses-dev flex bison gperf python python-serial \
+        bash-completion && \
+    rm -rf /var/lib/apt/lists/* && \
+    echo ". /etc/bash_completion" >> ~/.bashrc
 
 RUN wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz && \
     tar -xzf xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz && \

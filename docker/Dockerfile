@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 RUN wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz && \
     tar -xzf xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz && \
-    rm -f xtensa-esp32-elf-linux64-1.22.0-61-gab8375a-5.2.0.tar.gz
+    rm -f xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz
 
 RUN git clone --depth=1 --recursive https://github.com/espressif/esp-idf.git
 

@@ -4,7 +4,9 @@ This project is meant to ease the developmet for the esp32, containing the
 development tools all in one docker image, keeping your system clean.
 
 ## Dependencies
-That's the beauty of it, you just need `docker`. Ok...
+That's the beauty of it, you just need `docker`.
+
+Ok...
 If you want to use the Makefile you'll actually need `make`.
 
 ## Instructions

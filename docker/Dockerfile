@@ -2,9 +2,6 @@ FROM ubuntu
 
 WORKDIR /srv
 
-ENV TOOLCHAIN_VERSION 1.22.0-80-g6c4433a-5.2.0
-ENV IDF_VERSION v3.1
-
 RUN mkdir project
 
 RUN apt-get update && \
@@ -13,9 +10,13 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     echo ". /etc/bash_completion" >> ~/.bashrc
 
+ENV TOOLCHAIN_VERSION 1.22.0-80-g6c4433a-5.2.0
+
 RUN wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz && \
     tar -xzf xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz && \
     rm -f xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz
+
+ENV IDF_VERSION v3.1
 
 RUN git clone --single-branch --depth=1 -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git
 

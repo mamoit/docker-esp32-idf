@@ -20,7 +20,7 @@ ENV IDF_VERSION v3.1
 
 RUN git clone --single-branch --depth=1 -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git
 
-ENV PATH=$PATH:/srv/xtensa-esp32-elf/bin
+ENV PATH=$PATH:/srv/xtensa-esp32-elf/bin:/srv/esp-idf/tools
 ENV IDF_PATH=/srv/esp-idf
 
 VOLUME /srv/project

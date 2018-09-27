@@ -5,5 +5,14 @@ language: minimal
 services:
   - docker
 
+before_install:
+- docker pull mamoit/esp32
+
 script:
 - make docker
+
+deploy:
+  provider: script
+  script: make publish
+  on:
+    branch: master

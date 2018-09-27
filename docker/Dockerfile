@@ -14,7 +14,12 @@ FROM ubuntu
 
 WORKDIR /srv
 
-RUN mkdir project
+RUN mkdir project && \
+    useradd -c 'IDF' -m -d /srv/project -s /bin/bash idf && \
+    chown -R idf:idf /srv/project && \
+    adduser idf dialout
+
+VOLUME /srv/project
 
 RUN apt-get update && \
     apt-get install -y gcc git wget make libncurses-dev flex bison gperf python python-serial \
@@ -30,10 +35,9 @@ RUN wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION
 
 COPY --from=cloner /srv/esp-idf ./esp-idf
 
+USER idf
+
 ENV PATH=$PATH:/srv/xtensa-esp32-elf/bin:/srv/esp-idf/tools
 ENV IDF_PATH=/srv/esp-idf
 
-VOLUME /srv/project
-
 WORKDIR /srv/project
-

@@ -1,3 +1,15 @@
+FROM ubuntu as cloner
+
+RUN apt-get update && \
+    apt-get install -y git && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV IDF_VERSION v3.1
+
+RUN cd /srv && \
+    git clone --single-branch --depth=1 -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git && \
+    rm -rf /srv/esp-idf/.git
+
 FROM ubuntu
 
 WORKDIR /srv
@@ -16,9 +28,7 @@ RUN wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION
     tar -xzf xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz && \
     rm -f xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz
 
-ENV IDF_VERSION v3.1
-
-RUN git clone --single-branch --depth=1 -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git
+COPY --from=cloner /srv/esp-idf ./esp-idf
 
 ENV PATH=$PATH:/srv/xtensa-esp32-elf/bin:/srv/esp-idf/tools
 ENV IDF_PATH=/srv/esp-idf

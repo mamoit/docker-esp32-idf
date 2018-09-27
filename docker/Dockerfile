@@ -29,7 +29,7 @@ RUN apt-get update && \
 
 ENV TOOLCHAIN_VERSION 1.22.0-80-g6c4433a-5.2.0
 
-RUN wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz && \
+RUN wget -nv https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz && \
     tar -xzf xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz && \
     rm -f xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz
 

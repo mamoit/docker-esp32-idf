@@ -1,5 +1,7 @@
 # Docker container for esp32 development
 
+[![Build Status](https://travis-ci.org/mamoit/docker-esp32-idf.svg?branch=master)](https://travis-ci.org/mamoit/docker-esp32-idf)
+
 This project is meant to ease the developmet for the esp32, containing the
 development tools all in one docker image, keeping your system clean.
 

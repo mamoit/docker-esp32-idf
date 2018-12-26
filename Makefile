@@ -11,9 +11,9 @@ publish: docker
 	@echo "$(DOCKER_PASSWORD)" | docker login -u "$(DOCKER_USERNAME)" --password-stdin
 	docker push $(DOCKER_USERNAME)/esp32
 
-shell: docker
+shell:
 	docker run --rm -it --device=/dev/ttyUSB0 --volume /etc/localtime:/etc/localtime:ro --volume `pwd`/project:/srv/project $(DOCKER_USERNAME)/esp32 bash
 
-builder: docker
+builder:
 	docker run --rm -it --volume /etc/localtime:/etc/localtime:ro --volume /etc/timezone:/etc/timezone:ro --volume `pwd`/project:/srv/project $(DOCKER_USERNAME)/esp32 bash
 

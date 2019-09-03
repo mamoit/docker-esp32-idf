@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install -y git && \
     rm -rf /var/lib/apt/lists/*
 
-ENV IDF_VERSION v3.2
+ENV IDF_VERSION v3.2.2
 
 RUN cd /srv && \
     git clone --single-branch --depth=1 -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git && \

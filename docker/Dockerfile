@@ -10,7 +10,7 @@ RUN cd /srv && \
     git clone --single-branch --depth=1 -b $IDF_VERSION --recursive https://github.com/espressif/esp-idf.git && \
     rm -rf /srv/esp-idf/.git
 
-FROM ubuntu
+FROM python:3-slim
 
 WORKDIR /srv
 
@@ -34,6 +34,8 @@ RUN wget -nv https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-$TOOLCHAIN_VER
     rm -f xtensa-esp32-elf-linux64-$TOOLCHAIN_VERSION.tar.gz
 
 COPY --from=cloner /srv/esp-idf ./esp-idf
+
+RUN pip install --no-cache-dir -r ./esp-idf/requirements.txt
 
 USER idf
 
